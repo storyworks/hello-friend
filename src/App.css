@@ -1,3 +1,14 @@
+@import url("https://fonts.googleapis.com/css?family=Solway&display=swap");
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 html,
 body,
 ul,
@@ -10,64 +21,50 @@ body {
   background: #fcd424;
   font: normal 16px/24px "Helvetica Neue", Helvetica, Arial, freesans,
     sans-serif;
+  overflow: hidden;
+  height: 100%;
 }
 
-button,
-input,
-code {
-  display: inline-block;
-  outline: none;
-  font: inherit;
-  border: none;
-  background: #fde991;
-  padding: 0;
-}
-
-button {
-  color: #c7433e;
-  cursor: pointer;
-}
-
-input {
-  width: 50px;
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100vh;
 }
 
 #viewport {
-  width: 500px;
-  height: 500px;
+  width: 100%;
+  height: 80%;
   background: #c7433e;
   border: 10px solid #ed5d52;
-  margin: 100px auto 0;
-  position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 #viewport .stack {
-  width: 200px;
+  width: 80%;
   height: 300px;
   background: #ed5d52;
-  position: absolute;
-  top: 100px;
-  left: 50%;
-  margin-left: -100px;
+  position: relative;
+  top: 10%;
   border-radius: 10px;
 }
 
 #viewport .card {
-  width: 200px;
-  height: 300px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
   list-style: none;
   background: #fff;
   border-radius: 5px;
   position: absolute;
-  top: 0;
-  left: 0;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 1px 1px 1px rgba(0, 0, 0, 0.2);
-  line-height: 2.5rem;
+  line-height: 2.3rem;
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.7rem;
+  font-family: "Solway", serif;
   border: 10px solid #ececec;
-  box-sizing: border-box;
-  cursor: default;
 }
 
 #viewport .in-deck:nth-child(3) {
@@ -80,4 +77,8 @@ input {
   transform: translate(-4px, -2px) rotate(-1deg);
 }
 
+.logo {
+  height: 8%;
+  display: flex;
+}
 /* Styling for button to reset deck*/
