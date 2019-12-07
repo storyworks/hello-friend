@@ -1,32 +1,127 @@
-.App {
+html,
+body,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #fcd424;
+  font: normal 16px/24px "Helvetica Neue", Helvetica, Arial, freesans,
+    sans-serif;
+}
+
+button,
+input,
+code {
+  display: inline-block;
+  outline: none;
+  font: inherit;
+  border: none;
+  background: #fde991;
+  padding: 0;
+}
+
+button {
+  color: #c7433e;
+  cursor: pointer;
+}
+
+input {
+  width: 50px;
+}
+
+#viewport {
+  width: 500px;
+  height: 500px;
+  background: #c7433e;
+  border: 10px solid #ed5d52;
+  margin: 100px auto 0;
+  position: relative;
+}
+
+#viewport .stack {
+  width: 200px;
+  height: 300px;
+  background: #ed5d52;
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  margin-left: -100px;
+  border-radius: 10px;
+}
+
+#viewport .card {
+  width: 200px;
+  height: 300px;
+  list-style: none;
+  background: #fff;
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 1px 1px 1px rgba(0, 0, 0, 0.2);
+  line-height: 300px;
   text-align: center;
+  font-size: 100px;
+  border: 10px solid #ececec;
+  box-sizing: border-box;
+  cursor: default;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+#viewport .clubs,
+#viewport .spades {
+  color: #373737;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#viewport .diamonds,
+#viewport .hearts {
+  color: #ed5d52;
 }
 
-.App-link {
-  color: #61dafb;
+#viewport .in-deck:nth-child(3) {
+  top: 2px;
+  transform: translate(2px, 2px) rotate(0.4deg);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#viewport .in-deck:nth-child(2) {
+  top: 4px;
+  transform: translate(-4px, -2px) rotate(-1deg);
+}
+
+.control {
+  text-align: center;
+  font-size: 0;
+  margin: 20px;
+}
+
+.control button {
+  background: #ffffff;
+  color: #373737;
+  font-weight: bold;
+  border: none;
+  font: normal 18px/24px "Helvetica Neue", Helvetica, Arial, freesans,
+    sans-serif;
+  margin: 0 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  box-shadow: 0 2px 0 #63211f;
+  outline: none;
+  position: relative;
+}
+.control button:active {
+  background: #63211f;
+  color: #ffffff;
+  bottom: -2px;
+  box-shadow: none;
+}
+
+.source {
+  width: 500px;
+  margin: 20px auto;
+}
+
+.source a {
+  color: #c7433e;
 }
