@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Swing from "react-swing";
+import { questions } from "./questions";
 import "./App.css";
 
 class App extends Component {
@@ -13,22 +14,15 @@ class App extends Component {
           ref="stack"
           throwout={e => console.log("throwout", e)}
         >
-          <div
-            className="card clubs"
-            ref="card1"
-            throwout={e => console.log("card throwout", e)}
-          >
-            ♣
-          </div>
-          <div className="card diamonds" ref="card2">
-            ♦
-          </div>
-          <div className="card hearts" ref="card3">
-            ♥
-          </div>
-          <div className="card spades" ref="card4">
-            ♠
-          </div>
+          {questions.map(question => (
+            <div
+              className="card"
+              ref={question.id}
+              throwout={e => console.log("card throwout", e)}
+            >
+              {question.message}
+            </div>
+          ))}
         </Swing>
       </div>
     );
