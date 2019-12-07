@@ -1,8 +1,18 @@
 import React, { useState } from "react";
 import { useSprings, animated, to as interpolate } from "react-spring";
 import { useDrag } from "react-use-gesture";
-import { questions } from "../questions";
-import "./Deck.css";
+import { questions } from "./questions";
+import logo from "./logo.svg";
+
+import "./App.css";
+
+/**
+ * TODO:
+ * Flip to reveal
+ * Info credit
+ * Shuffle
+ * Create cards in correct order
+ */
 
 const to = i => ({
   x: 0,
@@ -14,7 +24,9 @@ const to = i => ({
 const from = i => ({ x: 0, rot: 0, scale: 1.5, y: -1000 });
 const trans = (r, s) => `rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`;
 
-export const Deck = reset => {
+const App = () => {
+  //const [shuffle, setShuffle] = useState(false);
+
   const [gone] = useState(() => new Set()); // The set flags all the cards that are flicked out
   const [cardProps, setCardProps] = useSprings(questions.length, i => ({
     ...to(i),
@@ -53,27 +65,36 @@ export const Deck = reset => {
           config: { friction: 50, tension: down ? 800 : isGone ? 200 : 500 }
         };
       });
-
-      // console.log(reset);
-      if (reset.reset && !down && gone.size === questions.length) {
-        reset.setReset();
-        setTimeout(() => gone.clear() || setCardProps(i => to(i)), 600);
-      }
     }
   );
 
-  // Now we're just mapping the animated values to our view, that's it. Btw, this component only renders once. :-)
-  return cardProps.map(({ x, y, rot, scale }, i) => (
-    <animated.div key={i} className={"stack"} style={{ x, y }}>
-      <animated.div
-        {...bind(i)}
-        className={"card"}
-        style={{
-          transform: interpolate([rot, scale], trans)
-        }}
+  return (
+    <>
+      <img src={logo} className="logo" alt="logo" />
+      <div className={"stack"}>
+        {cardProps.map(({ x, y, rot, scale }, i) => (
+          <animated.div key={i} className={"cardWrapper"} style={{ x, y }}>
+            <animated.div
+              {...bind(i)}
+              className={"card"}
+              style={{
+                transform: interpolate([rot, scale], trans)
+              }}
+            >
+              {questions[i].message}
+            </animated.div>
+          </animated.div>
+        ))}
+      </div>
+      <button
+        onClick={() =>
+          setTimeout(() => gone.clear() || setCardProps(i => to(i)), 0)
+        }
       >
-        {questions[i].message}
-      </animated.div>
-    </animated.div>
-  ));
+        <span>Reset</span>
+      </button>
+    </>
+  );
 };
+
+export default App;
