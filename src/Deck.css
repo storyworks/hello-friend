@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Solway&display=swap");
 
-#root > div {
+.stack {
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -10,7 +10,7 @@
   justify-content: center;
 }
 
-#root > div > div {
+.card {
   display: flex;
   align-items: center;
   background-color: white;
