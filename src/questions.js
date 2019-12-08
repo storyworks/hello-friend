@@ -11,7 +11,7 @@ export const questions = [
   {
     id: "card3",
     message: "What hobby would you get into if time and money weren't an issue?"
-  }
+  },
   {
     id: "card4",
     message: "What would your perfect room look like?"
@@ -72,8 +72,7 @@ export const questions = [
   },
   {
     id: "card18",
-    message:
-      "What game of movie universe whould you most like to live in?"
+    message: "What game of movie universe whould you most like to live in?"
   },
   {
     id: "card19",
@@ -101,6 +100,7 @@ export const questions = [
   },
   {
     id: "card25",
-    message: "What would be your first question after waking up from being cryogenically frozen for 100 years?"
+    message:
+      "What would be your first question after waking up from being cryogenically frozen for 100 years?"
   }
 ];

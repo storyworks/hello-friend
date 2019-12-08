@@ -67,7 +67,7 @@ button:focus {
 .cardWrapper {
   position: absolute;
   width: 100vw;
-  height: 87vh;
+  height: 95vh;
   will-change: transform;
   display: flex;
   flex-direction: column;
