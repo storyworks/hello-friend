@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSprings, animated, to as interpolate } from "react-spring";
 import { useDrag } from "react-use-gesture";
 import { questions } from "./questions";
@@ -24,15 +24,24 @@ const to = i => ({
 const from = i => ({ x: 0, rot: 0, scale: 1, y: 0 });
 const trans = (r, s) => `rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`;
 
-const App = () => {
-  //const [shuffle, setShuffle] = useState(false);
+const shuffle = () => {
+  for (let i = questions.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [questions[i], questions[j]] = [questions[j], questions[i]];
+  }
+};
 
+const App = () => {
   const [gone] = useState(() => new Set()); // The set flags all the cards that are flicked out
   const [cardProps, setCardProps] = useSprings(questions.length, i => ({
     ...to(i),
     from: from(i)
   }));
   const [flick, setFlick] = useState(0);
+
+  useEffect(() => {
+    shuffle();
+  }, []);
 
   const bind = useDrag(
     ({
@@ -70,7 +79,7 @@ const App = () => {
 
   return (
     <>
-      <img src={logo} className="logo" alt="logo" />
+      <p className="wordmark">hello friend</p>
       <div className={"stack"}>
         {cardProps.map(({ x, y, rot, scale }, i) => (
           <animated.div key={i} className={"cardWrapper"} style={{ x, y }}>
