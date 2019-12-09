@@ -88,8 +88,7 @@ button:focus {
   max-height: 450px;
   will-change: transform;
   border-radius: 10px;
-  box-shadow: 0 12.5px 20px -10px rgba(50, 50, 73, 0.4),
-    0 10px 10px -10px rgba(50, 50, 73, 0.3);
+  box-shadow: 0 12.5px 10px -10px rgba(50, 50, 73, 0.4);
   border: 10px solid #ececec;
   padding: 0 1.7rem;
   line-height: 2.3rem;

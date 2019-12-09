@@ -80,7 +80,7 @@ export const questions = [
   },
   {
     id: "card20",
-    message: "Are you usuall early or late?"
+    message: "Are you usually early or late?"
   },
   {
     id: "card21",
