@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useSprings, animated, to as interpolate } from "react-spring";
 import { useDrag } from "react-use-gesture";
 import { questions } from "./questions";
-import logo from "./logo.svg";
 
 import "./App.css";
 
@@ -10,8 +9,8 @@ import "./App.css";
  * TODO:
  * Flip to reveal
  * Info credit
- * Shuffle
- * Create cards in correct order
+ * Create tutorial card
+ * Make pretty
  */
 
 const to = i => ({
@@ -79,7 +78,6 @@ const App = () => {
 
   return (
     <>
-      <p className="wordmark">hello friend</p>
       <div className={"stack"}>
         {cardProps.map(({ x, y, rot, scale }, i) => (
           <animated.div key={i} className={"cardWrapper"} style={{ x, y }}>
@@ -102,6 +100,7 @@ const App = () => {
       >
         <span>Reset</span>
       </button>
+      <p className="wordmark">hello friend</p>
     </>
   );
 };

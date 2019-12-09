@@ -15,92 +15,92 @@ export const questions = [
   {
     id: "card4",
     message: "What would your perfect room look like?"
-  },
-  {
-    id: "card5",
-    message: "How often do you play sports?"
-  },
-  {
-    id: "card6",
-    message: "What fictional place would you most like to go?"
-  },
-  {
-    id: "card7",
-    message: "What job would you be terrible at?"
-  },
-  {
-    id: "card8",
-    message: "When was the last time you climbed a tree?"
-  },
-  {
-    id: "card9",
-    message:
-      "If you could turn any activity into an Olympic sport, what would you have a good chance at winning a medal for?"
-  },
-  {
-    id: "card10",
-    message: "What is the most annoying habit that other people have?"
-  },
-  {
-    id: "card11",
-    message: "What job do you think you'd be really good at?"
-  },
-  {
-    id: "card12",
-    message: "What skill would you like to master?"
-  },
-  {
-    id: "card13",
-    message: "What would be the most amazing adventure to go on?"
-  },
-  {
-    id: "card14",
-    message:
-      "If you had unlimited funds to build a house that you would live in for the rest of your life, what would the finished house be like?"
-  },
-  {
-    id: "card15",
-    message: "What's your favourite drink?"
-  },
-  {
-    id: "card16",
-    message: "What state or country do you never want to go back to?"
-  },
-  {
-    id: "card17",
-    message: "What songs have you completely memorized?"
-  },
-  {
-    id: "card18",
-    message: "What game of movie universe whould you most like to live in?"
-  },
-  {
-    id: "card19",
-    message: "What do you consider to be your best find?"
-  },
-  {
-    id: "card20",
-    message: "Are you usually early or late?"
-  },
-  {
-    id: "card21",
-    message: "What do you consider to be your best find?"
-  },
-  {
-    id: "card22",
-    message: "What pets did you have while you were growing up?"
-  },
-  {
-    id: "card23",
-    message: "What takes up too much of your time?"
-  },
-  {
-    id: "card24",
-    message: "What do you wish you knew more about?"
-  },
-  {
-    id: "card25",
-    message:
-      "What would be your first question after waking up from being cryogenically frozen for 100 years?"
   }
+  // {
+  //   id: "card5",
+  //   message: "How often do you play sports?"
+  // },
+  // {
+  //   id: "card6",
+  //   message: "What fictional place would you most like to go?"
+  // },
+  // {
+  //   id: "card7",
+  //   message: "What job would you be terrible at?"
+  // },
+  // {
+  //   id: "card8",
+  //   message: "When was the last time you climbed a tree?"
+  // },
+  // {
+  //   id: "card9",
+  //   message:
+  //     "If you could turn any activity into an Olympic sport, what would you have a good chance at winning a medal for?"
+  // },
+  // {
+  //   id: "card10",
+  //   message: "What is the most annoying habit that other people have?"
+  // },
+  // {
+  //   id: "card11",
+  //   message: "What job do you think you'd be really good at?"
+  // },
+  // {
+  //   id: "card12",
+  //   message: "What skill would you like to master?"
+  // },
+  // {
+  //   id: "card13",
+  //   message: "What would be the most amazing adventure to go on?"
+  // },
+  // {
+  //   id: "card14",
+  //   message:
+  //     "If you had unlimited funds to build a house that you would live in for the rest of your life, what would the finished house be like?"
+  // },
+  // {
+  //   id: "card15",
+  //   message: "What's your favourite drink?"
+  // },
+  // {
+  //   id: "card16",
+  //   message: "What state or country do you never want to go back to?"
+  // },
+  // {
+  //   id: "card17",
+  //   message: "What songs have you completely memorized?"
+  // },
+  // {
+  //   id: "card18",
+  //   message: "What game of movie universe whould you most like to live in?"
+  // },
+  // {
+  //   id: "card19",
+  //   message: "What do you consider to be your best find?"
+  // },
+  // {
+  //   id: "card20",
+  //   message: "Are you usually early or late?"
+  // },
+  // {
+  //   id: "card21",
+  //   message: "What do you consider to be your best find?"
+  // },
+  // {
+  //   id: "card22",
+  //   message: "What pets did you have while you were growing up?"
+  // },
+  // {
+  //   id: "card23",
+  //   message: "What takes up too much of your time?"
+  // },
+  // {
+  //   id: "card24",
+  //   message: "What do you wish you knew more about?"
+  // },
+  // {
+  //   id: "card25",
+  //   message:
+  //     "What would be your first question after waking up from being cryogenically frozen for 100 years?"
+  // }
 ];

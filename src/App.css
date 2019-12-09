@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css?family=Solway&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Pacifico&display=swap");
+
 html {
   box-sizing: border-box;
 }
@@ -29,22 +32,23 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
-  /* cursor: url("https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png")
-      20 20,
-    auto; */
+  justify-content: space-between;
 }
 
 .wordmark {
-  height: 8%;
   display: flex;
+  align-self: center;
+  margin: 9vh 0 0 -3vw;
+  font-family: "Pacifico", cursive;
+  font-size: 11vh;
+  color: #967272;
 }
 
 button {
   font-size: 2rem;
   overflow: hidden;
-  margin: 35vh auto;
+  margin: 29vh auto;
   display: flex;
-
   color: black;
   text-transform: uppercase;
   text-decoration: none;
@@ -52,14 +56,13 @@ button {
   padding: 20px;
   border-radius: 5px;
   border: none;
+
   transition: all 0.4s ease 0s;
 }
 
 button:focus {
   outline: 0;
 }
-
-@import url("https://fonts.googleapis.com/css?family=Solway&display=swap");
 
 .stack {
   position: absolute;
@@ -92,7 +95,8 @@ button:focus {
   box-shadow: 0 12.5px 10px -10px rgba(50, 50, 73, 0.4);
   border: 10px solid #ececec;
   padding: 0 1.7rem;
-  line-height: 2.3rem;
+  line-height: 33px;
+  line-height: 5vh;
   text-align: center;
   font-size: 25px;
   font-size: 3.5vh;
