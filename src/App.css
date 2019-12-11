@@ -38,24 +38,25 @@ body {
 .wordmark {
   display: flex;
   align-self: center;
-  margin: 9vh 0 0 -3vw;
+  margin: 85vh 0 0 -3vw;
   font-family: "Pacifico", cursive;
-  font-size: 11vh;
+  font-size: 21vw;
   color: #967272;
 }
 
 button {
+  font-family: "Solway", serif;
+
   font-size: 2rem;
   overflow: hidden;
   margin: 29vh auto;
   display: flex;
   color: black;
-  text-transform: uppercase;
   text-decoration: none;
   background: white;
-  padding: 20px;
+  padding: 10px;
   border-radius: 5px;
-  border: none;
+  border: 10px solid #ececec;
 
   transition: all 0.4s ease 0s;
 }
@@ -81,6 +82,7 @@ button:focus {
 
 .card {
   display: flex;
+  flex-direction: column;
   align-items: center;
   background-color: white;
   background-size: auto 85%;
