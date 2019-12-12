@@ -19,7 +19,7 @@ const Deck = props => {
   const [back, setBack] = useState(initialBack);
   const [gone] = useState(() => new Set()); // The set flags all the cards that are flicked out
   const [cardProps, setCardProps] = useSprings(questions.length, i => ({
-    ...to(i, position(i, initialFront - 1)),
+    ...to(i, position(i, front - 1)),
     from: from()
   }));
   const [flick, setFlick] = useState(0);
@@ -30,7 +30,7 @@ const Deck = props => {
         gone.clear() ||
         setFront(initialFront) ||
         setBack(initialBack) ||
-        setCardProps(i => to(i, position(i, initialFront - 1))) ||
+        setCardProps(i => to(i, position(i, front - 1))) ||
         setReset(false) ||
         0
     );

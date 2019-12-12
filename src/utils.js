@@ -9,7 +9,7 @@ export const to = (i, position) => ({
   y: position < 5 ? position * 15 : 0,
   scale: 1 - position * 0.03,
   rot: 0,
-  delay: i * 100
+  delay: 1000 - position * 150
 });
 
 export const from = () => ({ x: 0, rot: 0, scale: 1.5, y: -1000 });
