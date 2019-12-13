@@ -36,7 +36,7 @@ export const questions = [
   { id: 0, message: "What songs have you completely memorized?" },
   {
     id: 0,
-    message: "What game of movie universe whould you most like to live in?"
+    message: "What game of movie universe would you most like to live in?"
   },
   { id: 0, message: "What do you consider to be your best find?" },
   { id: 0, message: "Are you usually early or late?" },
@@ -229,7 +229,7 @@ export const questions = [
     message: "As you get older, what are you becoming more and more afraid of?"
   },
   { id: 0, message: "What is one of your favourite smells?" },
-  { id: 0, message: "What owuld be the scariest monster you could imagine?" },
+  { id: 0, message: "What would be the scariest monster you could imagine?" },
   {
     id: 0,
     message: "What song or artist do you like but rarely admit ot liking?"

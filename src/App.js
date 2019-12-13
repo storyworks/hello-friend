@@ -12,6 +12,7 @@ import "./App.css";
  * Add card numbers
  * Fix splash page
  * Update reset button
+ * Fix shuffle
  */
 
 const App = () => {

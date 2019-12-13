@@ -107,7 +107,7 @@ const Deck = props => {
               }}
             >
               {/* <p>{`#${cards[i].id.slice(4)}`}</p> */}
-              <br />
+
               {questions[i].message}
             </animated.div>
           </animated.div>
