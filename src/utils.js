@@ -12,7 +12,11 @@ export const to = (i, position) => ({
   delay: 1000 - position * 150
 });
 
-export const from = () => ({ x: 0, rot: 0, scale: 1.5, y: -1000 });
+export const from = position => {
+  return position < 5
+    ? { x: 0, rot: 0, scale: 1.5, y: -1000 }
+    : { x: 0, rot: 0, scale: 0, y: 0 };
+};
 
 export const trans = (r, s) =>
   `rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`;

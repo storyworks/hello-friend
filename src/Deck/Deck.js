@@ -20,7 +20,7 @@ const Deck = props => {
   const [gone] = useState(() => new Set()); // The set flags all the cards that are flicked out
   const [cardProps, setCardProps] = useSprings(questions.length, i => ({
     ...to(i, position(i, front - 1)),
-    from: from()
+    from: from(position(i, front - 1))
   }));
   const [flick, setFlick] = useState(0);
 
@@ -30,7 +30,11 @@ const Deck = props => {
         gone.clear() ||
         setFront(initialFront) ||
         setBack(initialBack) ||
-        setCardProps(i => to(i, position(i, front - 1))) ||
+        // This must use initialFront else it glitches the deck
+        setCardProps(i => ({
+          ...to(i, position(i, initialFront - 1)),
+          from: from(position(i, initialFront - 1))
+        })) ||
         setReset(false) ||
         0
     );
@@ -57,7 +61,8 @@ const Deck = props => {
       }
 
       setCardProps(i => {
-        if (i < back || i > front) return; // We're only interested in changing spring-data for the current shown springs
+        // back - 1 so you position the next invisible element ready for display
+        if (i < back - 1 || i > front) return; // We're only interested in changing spring-data for the current shown springs
 
         if (!down && trigger) {
           // Rest of cards in deck - shift them up deck
@@ -68,10 +73,10 @@ const Deck = props => {
           }
         }
 
-        // Current card
+        // Current card set props to make it fly out or follow mouse
         if (i === currentCard) {
           const isGone = gone.has(currentCard);
-          const x = isGone ? (200 + window.innerWidth) * dir : down ? mx : 0; // When a card is gone it flys out left or right, otherwise goes back to zero
+          const x = isGone ? (100 + window.innerWidth) * dir : down ? mx : 0; // When a card is gone it flys out left or right, otherwise goes back to zero
           const rot = mx / 10 + (isGone ? dir * 15 * velocity : 0); // How much the card tilts, flicking it harder makes it rotate faster
           const scale = down ? 1.1 : 1; // Active cards lift up a bit
           if (isGone) {
@@ -81,7 +86,7 @@ const Deck = props => {
             x,
             rot,
             scale,
-            delay: undefined,
+            delay: 0,
             config: { friction: 75, tension: down ? 800 : isGone ? 200 : 500 }
           };
         }

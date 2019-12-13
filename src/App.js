@@ -9,8 +9,9 @@ import "./App.css";
  * TODO:
  * Flip to reveal
  * Info credit
- * Make pretty
- * Improve progressive loading
+ * Add card numbers
+ * Fix splash page
+ * Update reset button
  */
 
 const App = () => {
