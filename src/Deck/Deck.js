@@ -106,9 +106,9 @@ const Deck = props => {
                 transform: interpolate([rot, scale], trans)
               }}
             >
-              {/* <p>{`#${cards[i].id.slice(4)}`}</p> */}
-
-              {questions[i].message}
+              <div />
+              <div className={"cardQuestions"}>{questions[i].message}</div>
+              <div className={"cardId"}>{`#${questions[i].id}`}</div>
             </animated.div>
           </animated.div>
         ) : null

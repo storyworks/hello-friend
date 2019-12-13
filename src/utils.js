@@ -1,4 +1,4 @@
-import { questions } from "./questions";
+// import { questions } from "./questions";
 
 export const position = (front, index) => {
   return Math.abs(index - front + 1);
@@ -21,9 +21,11 @@ export const from = position => {
 export const trans = (r, s) =>
   `rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`;
 
-export const shuffle = () => {
+export const shuffle = questions => {
   for (let i = questions.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [questions[i], questions[j]] = [questions[j], questions[i]];
   }
+
+  return questions;
 };

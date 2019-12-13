@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Solway&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Cherry+Swash&display=swap");
 
 html {
   box-sizing: border-box;
@@ -32,31 +32,20 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .wordmark {
   display: flex;
-  align-self: center;
-  margin: 85vh 0 0 -3vw;
-  font-family: "Pacifico", cursive;
-  font-size: 21vw;
+  align-self: flex-start;
+  font-family: "Cherry Swash", cursive;
+  font-size: 1.5rem;
   color: #967272;
 }
 
 button {
-  font-family: "Solway", serif;
-  font-size: 2rem;
-  overflow: hidden;
-  margin: 29vh auto;
+  margin: 30vh auto;
   display: flex;
-  color: black;
-  text-decoration: none;
-  background: white;
-  padding: 10px;
-  border-radius: 5px;
-  border: 10px solid #ececec;
-  transition: all 0.4s ease 0s;
 }
 
 button:focus {
@@ -82,7 +71,7 @@ button:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   background-color: white;
   background-size: auto 85%;
   background-repeat: no-repeat;
@@ -93,14 +82,28 @@ button:focus {
   max-height: 450px;
   will-change: transform;
   border-radius: 10px;
-  box-shadow: 0 12.5px 100px -10px rgba(50, 50, 73, 0.4),
+  box-shadow: 0 12.5px 100px -10px rgba(109, 50, 73, 0.4),
     0 10px 10px -10px rgba(50, 50, 73, 0.3);
   border: 10px solid #ececec;
-  padding: 0 1.7rem;
-  line-height: 33px;
-  line-height: 5vh;
-  text-align: center;
+  /* font-family: "Cherry Swash", cursive; */
   font-size: 25px;
   font-size: 3.5vh;
   font-family: "Solway", serif;
+  line-height: 33px;
+  line-height: 5vh;
+  text-align: center;
+}
+
+.cardQuestions {
+  display: flex;
+  padding: 0 1.7rem;
+}
+
+.cardId {
+  display: flex;
+  align-self: flex-end;
+  font-style: italic;
+  font-size: 3.5rem;
+  color: #ececec;
+  padding: 0 0.05em;
 }
