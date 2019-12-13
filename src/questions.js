@@ -250,7 +250,7 @@ export const questions = [
   { id: 114, message: "What would be the scariest monster you could imagine?" },
   {
     id: 115,
-    message: "What song or artist do you like but rarely admit ot liking?"
+    message: "What song or artist do you like but rarely admit to liking?"
   },
   {
     id: 116,
