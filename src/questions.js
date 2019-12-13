@@ -437,11 +437,11 @@ export const questions = [
   {
     id: 190,
     message:
-      "If you could have a video of any one event in your life, what even would you choose?"
+      "If you could have a video of any one event in your life, what event would you choose?"
   },
   {
     id: 191,
     message:
-      "If you were forced to relive one 10min block of your life again and again for all eternity, what 10mins of your life would you choose?"
+      "If you were forced to relive one 10min block of your life on loop for all eternity, what 10mins of your life would you choose?"
   }
 ];
