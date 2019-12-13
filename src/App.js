@@ -9,7 +9,6 @@ import "./App.css";
  * TODO:
  * Flip to reveal
  * Info credit
- * Add card numbers
  * Fix splash page
  */
 
@@ -51,6 +50,7 @@ const App = () => {
           </g>
         </svg>
       </button>
+      <div className={"credits"}>made by ziwei</div>
     </>
   );
 };
