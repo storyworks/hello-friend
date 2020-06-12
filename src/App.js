@@ -19,7 +19,6 @@ const App = () => {
   return (
     <>
       <div className="wordmark">hello friend.</div>
-      <Deck questions={shuffledQuestions} reset={reset} setReset={setReset} />
       <button
         onClick={() => {
           setReset(true);
@@ -51,6 +50,7 @@ const App = () => {
           </g>
         </svg>
       </button>
+      <Deck questions={shuffledQuestions} reset={reset} setReset={setReset} />
       <div className={"credits"}>made by ziwei</div>
     </>
   );
