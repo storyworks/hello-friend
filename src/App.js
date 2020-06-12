@@ -24,6 +24,7 @@ const App = () => {
         onClick={() => {
           setReset(true);
         }}
+        aria-label="Reset cards"
       >
         <svg
           version="1.0"
