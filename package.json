@@ -8,7 +8,7 @@
     "react-dom": "^16.8.6",
     "react-scripts": "^3.0.1",
     "react-spring": "9.0.0-beta.34",
-    "react-use-gesture": "^6.0.14"
+    "react-use-gesture": "^7.0.15"
   },
   "scripts": {
     "start": "react-scripts start",

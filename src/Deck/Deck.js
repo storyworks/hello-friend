@@ -1,26 +1,28 @@
 import React, { useState } from "react";
-import { useSprings, animated, to as interpolate } from "react-spring";
+import { useSprings, animated as a, to as interpolate } from "react-spring";
 import { useDrag } from "react-use-gesture";
 import { to, from, trans, position } from "../utils";
 
 import "../App.css";
 
-const Deck = props => {
+const Deck = (props) => {
   const [questions, reset, setReset] = [
     props.questions,
     props.reset,
-    props.setReset
+    props.setReset,
   ];
 
-  const initialFront = questions.length - 1;
-  const initialBack = questions.length - 6;
+  // First questions are stacked first, so top of deck is end of deck.
+  const totalCards = questions.length - 1;
+  const initialBottomIndex = totalCards - 6;
 
-  const [front, setFront] = useState(initialFront);
-  const [back, setBack] = useState(initialBack);
+  const [availableCards, setAllCards] = useState(totalCards);
+  const [bottomCardIndex, setDisplayRange] = useState(initialBottomIndex);
   const [gone] = useState(() => new Set()); // The set flags all the cards that are flicked out
-  const [cardProps, setCardProps] = useSprings(questions.length, i => ({
-    ...to(i, position(i, front - 1)),
-    from: from(position(i, front - 1))
+  const [revealed] = useState(() => new Set());
+  const [cardProps, setCardProps] = useSprings(questions.length, (i) => ({
+    ...to(position(totalCards, i, "to")),
+    from: from(position(totalCards, i, "fr")),
   }));
   const [flick, setFlick] = useState(0);
 
@@ -28,17 +30,31 @@ const Deck = props => {
     setTimeout(
       () =>
         gone.clear() ||
-        setFront(initialFront) ||
-        setBack(initialBack) ||
-        // This must use initialFront else it glitches the deck
-        setCardProps(i => ({
-          ...to(i, position(i, initialFront - 1)),
-          from: from(position(i, initialFront - 1))
+        revealed.clear() ||
+        setAllCards(totalCards) ||
+        setDisplayRange(initialBottomIndex) ||
+        // This must use totalCards else it glitches the deck
+        setCardProps((cardIndex) => ({
+          ...to(position(totalCards, cardIndex, "reset to")),
+          from: from(position(totalCards, cardIndex, "reset fr")),
         })) ||
         setReset(false) ||
         0
     );
   }
+
+  const triggerEvents = (down, tap, currentCard, trigger) => {
+    if (!down && trigger) {
+      gone.add(currentCard); // If button/finger's up and trigger is reached, we flag the card ready to fly out
+      setAllCards(availableCards - 1);
+      setDisplayRange(bottomCardIndex - 1);
+    }
+
+    if (tap && !gone.has(currentCard)) {
+      revealed.add(currentCard);
+      console.log(revealed);
+    }
+  };
 
   const bind = useDrag(
     ({
@@ -47,47 +63,67 @@ const Deck = props => {
       movement: [mx],
       distance,
       direction: [xDir],
-      velocity
+      velocity,
+      tap,
     }) => {
-      const trigger = distance > 125 || velocity > 0.2; // If you flick hard or far enough it should trigger the card to fly out
-
-      setFlick(flick + xDir); // Direction should be sum of direction at each drag moment
-      const dir = flick < 0 ? -1 : 1; // Direction should either point left or right
-
-      if (!down && trigger) {
-        gone.add(currentCard); // If button/finger's up and trigger is reached, we flag the card ready to fly out
-        setFront(front - 1);
-        setBack(back - 1);
-      }
-
-      setCardProps(i => {
+      setCardProps((cardIndex) => {
+        // We're only interested in changing spring-data for the current shown springs
         // back - 1 so you position the next invisible element ready for display
-        if (i < back - 1 || i > front) return; // We're only interested in changing spring-data for the current shown springs
+        if (cardIndex < bottomCardIndex - 1 || cardIndex > availableCards)
+          return;
+
+        const trigger = distance > 125 || velocity > 0.2; // If you flick hard or far enough it should trigger the card to fly out
 
         if (!down && trigger) {
-          // Rest of cards in deck - shift them up deck
-          if (i !== currentCard) {
+          // Rest of shown cards in deck - shift them up deck
+          if (cardIndex !== currentCard) {
+            const setNextCard = cardIndex + 1;
             return {
-              to: to(i, position(front, i))
+              to: to(position(availableCards, setNextCard, "drag")),
             };
           }
         }
 
+        setFlick(flick + xDir); // Direction should be sum of direction at each drag moment
+        const dir = flick < 0 ? -1 : 1; // Direction should either point left or right
+
+        triggerEvents(down, tap, currentCard, trigger);
+
         // Current card set props to make it fly out or follow mouse
-        if (i === currentCard) {
+        if (cardIndex === currentCard) {
           const isGone = gone.has(currentCard);
-          const x = isGone ? (100 + window.innerWidth) * dir : down ? mx : 0; // When a card is gone it flys out left or right, otherwise goes back to zero
-          const rot = mx / 10 + (isGone ? dir * 15 * velocity : 0); // How much the card tilts, flicking it harder makes it rotate faster
-          const scale = down ? 1.1 : 1; // Active cards lift up a bit
+          const isRevealed = revealed.has(currentCard);
+          // When a card is gone it flys out left or right, otherwise goes back to zero
+          const x = isGone ? (100 + window.innerWidth) * dir : down ? mx : 0;
+          const y = currentCard.y - 10;
+
+          // How much the card tilts, flicking it harder makes it rotate faster
+          const tilt = mx / 10 + (isGone ? dir * 15 * velocity : 0);
+          const modifyTilt = isRevealed ? tilt * -1 : tilt;
+
+          const rotX = 0;
+          const rotY = isRevealed ? 180 : 0;
+          const rotZ =
+            modifyTilt < 0
+              ? Math.max(modifyTilt, -64)
+              : Math.min(modifyTilt, 64);
+          const rot = [rotX, rotY, rotZ];
+          const scale = isRevealed ? 1 : 0.95;
+
           if (isGone) {
             setFlick(0);
           }
+
           return {
             x,
             rot,
             scale,
             delay: 0,
-            config: { friction: 75, tension: down ? 800 : isGone ? 200 : 500 }
+            config: {
+              friction: isRevealed ? (isGone ? 75 : 75) : 75,
+              tension: down ? 800 : isGone ? 200 : 500,
+            },
+            filterTaps: true,
           };
         }
       });
@@ -96,23 +132,31 @@ const Deck = props => {
 
   return (
     <div className={"stack"}>
-      {cardProps.map(({ x, y, rot, scale }, i) =>
-        i <= front + 1 && i > back ? (
-          <animated.div key={i} className={"cardWrapper"} style={{ x, y }}>
-            <animated.div
+      {cardProps.map(({ x, y, rot, scale }, i) => {
+        console.log("i:", i);
+        return i <= availableCards + 1 && i > bottomCardIndex ? (
+          <a.div key={i} className={"cardWrapper"} style={{ x, y }}>
+            <a.div
               {...bind(i)}
               className={"card"}
               style={{
-                transform: interpolate([rot, scale], trans)
+                transform: interpolate([rot, scale], trans),
               }}
             >
-              <div />
-              <div className={"cardQuestions"}>{questions[i].message}</div>
-              <div className={"cardId"}>{`#${questions[i].id}`}</div>
-            </animated.div>
-          </animated.div>
-        ) : null
-      )}
+              <div className={"card-back"}>
+                {questions[i].id === 0 ? (
+                  <div className={"instructions"}>{questions[i].part1}</div>
+                ) : (
+                  <div className={"cardId"}>{`#${questions[i].id}`}</div>
+                )}
+              </div>
+              <div className={"card-front"}>
+                <div className={"cardQuestions"}>{questions[i].message}</div>
+              </div>
+            </a.div>
+          </a.div>
+        ) : null;
+      })}
     </div>
   );
 };
