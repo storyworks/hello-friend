@@ -176,9 +176,9 @@ const Deck = (props) => {
                     className={"mark"}
                     style={{
                       fontSize: `${
-                        (4.2 * window.innerHeight) / window.innerWidth
-                      }em`,
-                      color: "#aaa",
+                        (15 * window.innerHeight) / window.innerWidth
+                      }vh`,
+                      color: "#ddd",
                     }}
                   >
                     ?
