@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Solway&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Cherry+Swash&display=swap");
 
 html {
@@ -24,7 +23,7 @@ body {
   overflow: hidden;
 }
 
-#root {
+.app {
   background: #bc8f8f;
   position: fixed;
   overflow: hidden;
@@ -35,12 +34,20 @@ body {
   justify-content: space-between;
 }
 
+.header {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .wordmark {
   display: flex;
+  position: absolute;
+  flex-wrap: nowrap;
+  left: 16px;
+  top: 8px;
   align-self: flex-start;
   font-family: "Cherry Swash", cursive;
   font-size: 1.5rem;
-  color: #967272;
 }
 
 .content {
@@ -53,9 +60,9 @@ body {
 .credits {
   display: flex;
   align-self: flex-end;
+  margin: 0 8px 4px 0;
   font-family: "Cherry Swash", cursive;
   font-size: 1rem;
-  color: #967272;
 }
 
 button {
@@ -72,66 +79,4 @@ button {
 
 button:focus {
   outline: 0;
-}
-
-.stack {
-  position: absolute;
-}
-
-.cardWrapper {
-  position: absolute;
-  margin: 5vh 5vw;
-  width: 90vw;
-  height: 60vh;
-  will-change: transform;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  perspective: 1000px;
-}
-
-.card {
-  position: relative;
-  width: 100%;
-  height: 60vh;
-  will-change: transform;
-  box-shadow: 0 12.5px 100px -10px rgba(109, 50, 73, 0.4),
-    0 10px 10px -10px rgba(50, 50, 73, 0.3);
-  font-size: 1.6em;
-  font-family: "Solway", serif;
-  line-height: 1.5em;
-  text-align: center;
-  transform-style: preserve-3d;
-}
-
-.card-front,
-.card-back {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  padding: 2.5rem;
-  background-color: white;
-  border: 10px solid #ececec;
-  border-radius: 10px;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-
-.card-front {
-  transform: rotateY(180deg);
-}
-
-.card-back {
-  background-color: white;
-}
-
-.cardId {
-  font-style: italic;
-  font-size: 3.5rem;
-  color: #ececec;
-  padding: 0 0.05em;
 }

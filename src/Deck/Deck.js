@@ -3,7 +3,31 @@ import { useSprings, animated as a, to as interpolate } from "react-spring";
 import { useDrag } from "react-use-gesture";
 import { to, from, trans, position } from "../utils";
 
-import "../App.css";
+import "./Deck.css";
+
+const graphic = (color1, color2, isBottom, ratio) => (
+  <svg
+    viewBox={`0 0 1000 ${330 * ratio}`}
+    xmlns="http://www.w3.org/2000/svg"
+    className={`graphic ${isBottom ? "rotate" : ""}`}
+  >
+    <g>
+      <path
+        transform="rotate(90 333,165)"
+        id="svg_4"
+        //
+        d={`m168,10l0,-168l${330 * ratio},660l-${330 * ratio},0z`}
+        fill="#DDD"
+      />
+      <path
+        transform="rotate(-180 666,165)"
+        id="svg_2"
+        d={`m330,330l 0,-${330 * ratio}l660,${330 * ratio}l-660,0z`}
+        fill={color1}
+      />
+    </g>
+  </svg>
+);
 
 const Deck = (props) => {
   const [questions, reset, setReset] = [
@@ -95,7 +119,6 @@ const Deck = (props) => {
           const isRevealed = revealed.has(currentCard);
           // When a card is gone it flys out left or right, otherwise goes back to zero
           const x = isGone ? (100 + window.innerWidth) * dir : down ? mx : 0;
-          const y = currentCard.y - 10;
 
           // How much the card tilts, flicking it harder makes it rotate faster
           const tilt = mx / 10 + (isGone ? dir * 15 * velocity : 0);
@@ -130,10 +153,11 @@ const Deck = (props) => {
     }
   );
 
+  const ratio = (window.innerHeight * 0.7) / window.innerWidth;
+
   return (
     <div className={"stack"}>
       {cardProps.map(({ x, y, rot, scale }, i) => {
-        console.log("i:", i);
         return i <= availableCards + 1 && i > bottomCardIndex ? (
           <a.div key={i} className={"cardWrapper"} style={{ x, y }}>
             <a.div
@@ -144,14 +168,28 @@ const Deck = (props) => {
               }}
             >
               <div className={"card-back"}>
-                {questions[i].id === 0 ? (
+                {graphic(props.theme.color1, props.theme.color2, false, ratio)}
+                {questions[i].id === "?" ? (
                   <div className={"instructions"}>{questions[i].part1}</div>
                 ) : (
-                  <div className={"cardId"}>{`#${questions[i].id}`}</div>
+                  <div
+                    className={"mark"}
+                    style={{
+                      fontSize: `${
+                        (4.6 * window.innerHeight) / window.innerWidth
+                      }em`,
+                      color: "#ddd",
+                    }}
+                  >
+                    ?
+                  </div>
                 )}
+                {graphic(props.theme.color1, props.theme.color2, true, ratio)}
               </div>
               <div className={"card-front"}>
+                <div className={"cardId topId"}>{`#${questions[i].id}`}</div>
                 <div className={"cardQuestions"}>{questions[i].message}</div>
+                <div className={"cardId bottomId"}>{`#${questions[i].id}`}</div>
               </div>
             </a.div>
           </a.div>

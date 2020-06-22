@@ -6,7 +6,7 @@ export const position = (totalCards, cardIndex, string) => {
 
 export const to = (position) => ({
   x: 0,
-  y: position < 5 ? (position === 0 ? 0 : position * 15) : 0,
+  y: position < 5 ? (position === 0 ? 0 : position * 12) : 0,
   scale: 0.9 - (position + 3) * 0.03,
   rot: [0, 0, 0],
   delay: 1000 - position * 150,
