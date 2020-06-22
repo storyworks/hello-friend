@@ -169,7 +169,7 @@ const Deck = (props) => {
             >
               <div className={"card-back"}>
                 {graphic(props.theme.color1, props.theme.color2, false, ratio)}
-                {questions[i].id === "?" ? (
+                {questions[i].id === 0 ? (
                   <div className={"instructions"}>{questions[i].part1}</div>
                 ) : (
                   <div
