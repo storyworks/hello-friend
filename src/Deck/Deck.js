@@ -55,15 +55,15 @@ const Deck = (props) => {
       () =>
         gone.clear() ||
         revealed.clear() ||
+        setReset(false) ||
         setAllCards(totalCards) ||
         setDisplayRange(initialBottomIndex) ||
         // This must use totalCards else it glitches the deck
         setCardProps((cardIndex) => ({
           ...to(position(totalCards, cardIndex, "reset to")),
           from: from(position(totalCards, cardIndex, "reset fr")),
-        })) ||
-        setReset(false) ||
-        0
+        })),
+      0
     );
   }
 
