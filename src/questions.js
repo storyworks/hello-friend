@@ -1,7 +1,7 @@
 export const instructions = {
   id: 0,
   part1: "Tap to reveal",
-  message: "Swipe to discard",
+  message: "Swipe left/right to discard",
 };
 
 export const questions = [

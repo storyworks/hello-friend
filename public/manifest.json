@@ -1,6 +1,8 @@
 {
   "short_name": "Hello Friend",
   "name": "Hello Friend",
+  "description": "Question cards",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "favicon_192.png",
@@ -15,6 +17,6 @@
   ],
   "start_url": "./index.html",
   "display": "standalone",
-  "theme_color": "#e0aaaa",
-  "background_color": "#bc8f8f"
+  "theme_color": "#dddddd",
+  "background_color": "#dddddd"
 }

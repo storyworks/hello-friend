@@ -17,7 +17,7 @@ const graphic = (color1, color2, isBottom, ratio) => (
         id="svg_4"
         //
         d={`m168,10l0,-168l${330 * ratio},660l-${330 * ratio},0z`}
-        fill="#DDD"
+        fill="#ddd"
       />
       <path
         transform="rotate(-180 666,165)"
@@ -76,7 +76,6 @@ const Deck = (props) => {
 
     if (tap && !gone.has(currentCard)) {
       revealed.add(currentCard);
-      console.log(revealed);
     }
   };
 

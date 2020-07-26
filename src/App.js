@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import { shuffle } from "./utils";
 import { questions, instructions } from "./questions";
 import Deck from "./Deck/Deck";
-import Themes from "./Themes/Themes";
+// import Themes from "./Themes/Themes";
 import palettes from "./Themes/palettes";
 
 import "./App.css";
 
 /**
  * TODO:
- * Flip to reveal
  * Info credit
  * Fix splash page
  */
@@ -44,7 +43,7 @@ const resetButton = (theme) => (
 const App = () => {
   const [shuffledQuestions] = useState([...shuffle(questions), instructions]);
   const [reset, setReset] = useState(false);
-  const [theme, setTheme] = useState(palettes[0]);
+  const [theme] = useState(palettes[0]);
 
   return (
     <div className={"app"} style={theme}>
@@ -52,7 +51,7 @@ const App = () => {
         <div className="wordmark" style={{ color: theme.colorOnDark }}>
           hello friend.
         </div>
-        <Themes theme={theme} setTheme={setTheme} />
+        {/* <Themes theme={theme} setTheme={setTheme} /> */}
       </div>
       <div className={"content"}>
         <button
