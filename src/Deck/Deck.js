@@ -50,21 +50,22 @@ const Deck = (props) => {
   }));
   const [flick, setFlick] = useState(0);
 
+  // TODO: Shuffle deck after reset
+  const resetDeck = () => {
+    gone.clear();
+    revealed.clear();
+    setReset(false);
+    setAllCards(totalCards);
+    setDisplayRange(initialBottomIndex);
+    // This must use totalCards else it glitches the deck
+    setCardProps((cardIndex) => ({
+      ...to(position(totalCards, cardIndex, "reset to")),
+      from: from(position(totalCards, cardIndex, "reset fr")),
+    }));
+  };
+
   if (reset) {
-    setTimeout(
-      () =>
-        gone.clear() ||
-        revealed.clear() ||
-        setReset(false) ||
-        setAllCards(totalCards) ||
-        setDisplayRange(initialBottomIndex) ||
-        // This must use totalCards else it glitches the deck
-        setCardProps((cardIndex) => ({
-          ...to(position(totalCards, cardIndex, "reset to")),
-          from: from(position(totalCards, cardIndex, "reset fr")),
-        })),
-      0
-    );
+    setTimeout(() => resetDeck(), 0);
   }
 
   const triggerEvents = (down, tap, currentCard, trigger) => {
