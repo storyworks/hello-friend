@@ -1,6 +1,6 @@
 // cardIndex 0 starts from bottom of deck
 // position 0 starts from front of deck
-export const position = (totalCards, cardIndex, string) => {
+export const position = (totalCards, cardIndex) => {
   return totalCards - cardIndex;
 };
 

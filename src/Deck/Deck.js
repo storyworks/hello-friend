@@ -59,8 +59,8 @@ const Deck = (props) => {
     setDisplayRange(initialBottomIndex);
     // This must use totalCards else it glitches the deck
     setCardProps((cardIndex) => ({
-      ...to(position(totalCards, cardIndex, "reset to")),
-      from: from(position(totalCards, cardIndex, "reset fr")),
+      ...to(position(totalCards, cardIndex)),
+      from: from(position(totalCards, cardIndex)),
     }));
   };
 
